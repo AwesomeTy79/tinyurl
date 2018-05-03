@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>generating...</title>
+  </head>
+  <body>
+   <script>
+   var getParams = function getParams(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+   var alias = prompt('Custom name?'); 
+   var href = getParams('href');
+   var link = 'https://tinyurl.com/create.php?url=' + encodeURIComponent(href) + '&alias=' + encodeURIComponent(alias); 
+   location.href = link; 
+   </script>
+  </body>
+</html>
